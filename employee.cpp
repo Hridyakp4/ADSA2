@@ -172,20 +172,8 @@ void modifyrec(int cntr)
                 }
                 else
                 {
-                    ofstream fout("temp.dat", ios:: binary | ios:: out);        //open temp.dat file for write operation
-                    ifstream fin("recs.dat", ios:: binary | ios:: out);         //open recs.dat file for read operation
-                    fin.read((char*)&e, sizeof(e));
-                    while(!fin.eof())
-                    {
-                        if(e.getno() == eno)          //search the employee record in object file
-                        {
-                            e.modify();
-                            fout.write((char*)&e, sizeof(e));
-                        }
-                        else                        //otherwise just read the records
-                        {
-                            fout.write((char*)&e, sizeof(e));
-                        }
+                    fout.write((char*)&e, sizeof(e));
+                }
             fin.read((char*)&e, sizeof(e));
             fout.close();               //close temp.dat
             fin.close();                //close recs.dat
